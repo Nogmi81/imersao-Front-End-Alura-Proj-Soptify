@@ -6,18 +6,21 @@ function requestApi(searchTerm) {
   fetch("./api-artists/artists.json")
     .then(response => response.json())
     .then(data => {
-      console.log("Dados da API:", data); // Verifica se os dados estão vindo corretamente
+      console.log("Dados do JSON:", data);
 
-      // Filtragem manual por nome ou gênero
-      const filteredResults = data.filter(artist =>
-        artist.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        artist.genre.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      if (data && Array.isArray(data.artists)) { // Verifica se 'data' existe e se 'data.artists' é um array
+        const filteredResults = data.artists.filter(artist =>
+          artist.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          artist.genre.toLowerCase().includes(searchTerm.toLowerCase())
+        );
 
-      console.log("Resultados filtrados:", filteredResults); // Verifica se está filtrando corretamente
-      displayResults(filteredResults);
+        console.log("Resultados filtrados:", filteredResults);
+        displayResults(filteredResults);
+      } else {
+        console.error("Erro: 'data.artists' não é um array ou 'data' é inválido.");
+      }
     })
-    .catch(error => console.error("Erro ao buscar artistas:", error));
+    .catch(error => console.error("Erro ao ler o arquivo JSON:", error));
 }
 
 function displayResults(results) {
