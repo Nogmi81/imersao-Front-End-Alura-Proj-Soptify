@@ -4,7 +4,7 @@ const searchInput = document.getElementById("search-input");
 
 function requestApi(searchTerm) {
   // fetch("http://localhost:3000/artists")
-  fetch("/artists")
+  fetch("/api-artists/artists")
     .then(response => response.json())
     .then(data => {
       console.log("Dados da API:", data); // Verifica se os dados estão vindo corretamente
