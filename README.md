@@ -4,4 +4,4 @@
 
 Código-fonte disponibilizado na imersão. Feito apenas uma adaptação para a leitura do JSON 
 
-https://imersao-front-end-alura-proj-soptify.vercel.app/
+Link para visualizar o projeto no Vercel: https://imersao-front-end-alura-proj-soptify.vercel.app/
